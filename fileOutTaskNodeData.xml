@@ -1,0 +1,498 @@
+<TaskNodeData AllowedTime="" AllowedTimeSiteCode="" AllowedTimeUnit="" AllowOtherUsersWithSameRoleToSignOff="true" Category="Task" ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_ACTIVITY" DroppedToDiagram="true" DueDate="DUE_DATE" DynamicFormName="" DynamicTaskName="TASK_NAME" EscalateToOwner="true" ExecuteInPortal="" FieldToBeSetWithStepID="" Figure="Square" FormName="CAPA_GENERALTASK_FORM" IsApproverTask="false" Key="tAdhoc" Level="'1'" Location="654.5 2762.5" NotifyOwner="true" NotifyOwnerWithEscalationCode="CAPA_ADHOC" Owner="ASSIGNED_ACT_CODE" OwnerRole="ASSIGNED_ROLE_CODE" PerUniqueUsers="false" QualifyingCondition="C_TASK_ID='' and ACTIVITY_TYPE='tAdhoc'" SignatureRequired="true" SkipConfirmation="false" SubGraphKey="pAdhocTaskPhase" TaskCreationMode="Dynamic" Text="Adhoc">
+        <EntryActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action ContextNode="" CreationMode="Temp" FormName="" Id="Action_41c6b6c8-0fa5-4562-8aa4-63677d449d0c" IsSetupMeeting="false" Name="" QualifyingCondition="" Rule="" SuccessfulMessage="" Type="NotifyOwner" xsi:type="NotifyOwnerAction">
+            <Params>
+              <Param Name="To">//PhaseStepBeingEvaluated/StepBeingEvaluated/Owner</Param>
+              <Param Name="Cc"/>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">$Param$StepName$Param$ for $GRC_RECORD_NUMBER$ has been assigned to you.</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">#lt;#br#gt;#</Param>
+              <Param Name="AppendTaskLink">false</Param>
+              <Param Name="AppendRecordLink">false</Param>
+            </Params>
+          </Action>
+        </EntryActions>
+        <ExitActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_ACTIVITY" CreationMode="Temp" Id="Action_f9ce7aa2-969e-477a-8871-2aa7641e0f40" Name="Update Current Record Status" QualifyingCondition="C_TASK_ID=//PhaseStepBeingEvaluated/StepBeingEvaluated/TaskId" RowIdentifier="PK_ID" SuccessfulMessage="" Type="Update" xsi:type="UpdateAction">
+            <Params>
+              <Param Id="ac7e8dfe-9b40-4178-8502-95550588f005" Name="RECORD_STATUS" Type="String">'COMPLETED'</Param>
+              <Param Id="96cb05ab-51af-450f-bf82-83e6e16f44d5" Name="COMPLETED_BY_CODE" Type="String">GetCurrentUserInfo('ActorCode')</Param>
+              <Param Id="1c6685fe-137c-4157-998a-a99bd77cd45d" Name="COMPLETED_DATE" Type="String">GetDateIgnoreTime('Today')</Param>
+            </Params>
+          </Action>
+        </ExitActions>
+      </TaskNodeData><TaskNodeData AllowedTime="" AllowedTimeSiteCode="" AllowedTimeUnit="" AllowOtherUsersWithSameRoleToSignOff="true" Category="Task" ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_TEAM" Description="Verify CAPA Completion task" DroppedToDiagram="true" DueDate="../V_SS_CAPA-V_SS_CAPA_POLICY/CLOSURE_DUE_DATE" DynamicFormName="" DynamicTaskName="" EscalateToOwner="true" ExecuteInPortal="" FieldToBeSetWithStepID="" Figure="Square" FormName="CAPA_COMPLETION_REVIEW" IsApproverTask="false" Key="tVerifyCAPACompletion" Level="'1'" Location="40 2080" NotifyOwner="true" NotifyOwnerWithEscalationCode="CAPA_NOT_CLOS" Owner="ACTOR_CODE" OwnerRole="ROLE_CODE" PerUniqueUsers="false" QualifyingCondition="MEMBER_TYPE='Completion Review'" SignatureRequired="true" SkipConfirmation="false" SubGraphKey="pCompletionReview" TaskCreationMode="Dynamic" Text="Verify CAPA Completion">
+        <EntryActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action ContextNode="" CreationMode="Temp" FormName="" Id="Action_7c05ea8a-7bec-4f26-9cf4-e864dee2706b" IsSetupMeeting="false" Name="" QualifyingCondition="" Rule="" SuccessfulMessage="" Type="NotifyOwner" xsi:type="NotifyOwnerAction">
+            <Params>
+              <Param Name="To">//PhaseStepBeingEvaluated/StepBeingEvaluated/Owner</Param>
+              <Param Name="Cc"/>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">Completion Review for CAPA: $../RECORD_NUMBER$ has been assigned to you.</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">#lt;#br#gt;#</Param>
+              <Param Name="AppendTaskLink">true</Param>
+              <Param Name="AppendRecordLink">false</Param>
+            </Params>
+          </Action>
+        </EntryActions>
+        <ExitActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action CreationMode="Temp" Id="Action_7771a60d-b773-4554-99d4-0bbc866005ea" Name="Evaluate Void Due Date Extension step in subworkflow" Rule="Completion Review - Due Date needs Approval" SuccessfulMessage="" Type="Generic" Xml="&lt;Actions> &lt;Action Type=&quot;EvaluateStep&quot; Name=&quot;VoidDueDate&quot; ContextNode=&quot;&quot; SuccessMessageId=&quot;&quot; Id=&quot;Action_be9486c8-fe6e-4696-b7dd-17d2b14fd5e3&quot;>  &lt;Params>   &lt;Param Name=&quot;ContainerWorkflowKey&quot; Type=&quot;String&quot;>'CAPAWORKFLOW'&lt;/Param>   &lt;Param Name=&quot;WorkflowKey&quot; Type=&quot;String&quot;>'Due Date Extension'&lt;/Param>   &lt;Param Name=&quot;EntityTypeId&quot; Type=&quot;String&quot;>'CAPA'&lt;/Param>   &lt;Param Name=&quot;RecordId&quot; Type=&quot;String&quot;>PK_ID&lt;/Param>   &lt;Param Name=&quot;WorkflowInstanceId&quot; Type=&quot;String&quot;>&lt;/Param>   &lt;Param Name=&quot;StepId&quot; Type=&quot;String&quot;>'stVoidDueDate'&lt;/Param>   &lt;Param Name=&quot;Scope&quot; Type=&quot;String&quot;>'SameContainerWorkFlow'&lt;/Param>  &lt;/Params> &lt;/Action>&lt;/Actions>" xsi:type="GenericAction">
+            <Params/>
+          </Action>
+        </ExitActions>
+      </TaskNodeData><TaskNodeData AllowedTime="" AllowedTimeSiteCode="" AllowedTimeUnit="" AllowOtherUsersWithSameRoleToSignOff="true" Category="Task" ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_TEAM" Description="Verify CAPA Effectiveness task" DroppedToDiagram="true" DueDate="../V_SS_CAPA-V_SS_CAPA_POLICY/VOE_DUE_DATE" DynamicFormName="" DynamicTaskName="" EscalateToOwner="true" ExecuteInPortal="" FieldToBeSetWithStepID="" Figure="Square" FormName="CAPA_EFFECTIVENESS_REVIEW" IsApproverTask="false" Key="tVerifyCAPAEffectiveness" Level="'1'" Location="440 2300" NotifyOwner="true" NotifyOwnerWithEscalationCode="CAPA_NOT_VER_EFF" Owner="ACTOR_CODE" OwnerRole="ROLE_CODE" PerUniqueUsers="false" QualifyingCondition="MEMBER_TYPE='Effectiveness Review'" SignatureRequired="true" SkipConfirmation="false" SubGraphKey="pEffectivenessReview" TaskCreationMode="Dynamic" Text="Verify CAPA Effectiveness">
+        <EntryActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action ContextNode="V_SS_CAPA" CreationMode="Temp" Id="d4b1e0f1-3d65-4a1a-8581-2ae1b481e766" Name="Reset Is CAPA Effective Flag" RowIdentifier="PK_ID" SuccessfulMessage="" Type="Update" xsi:type="UpdateAction">
+            <Params>
+              <Param Id="6452641b-110f-49a0-b383-c8688e5ecae2" Name="IS_CAPA_JUDGED_EFFECTIVE" Type="String">''</Param>
+            </Params>
+          </Action>
+          <Action ContextNode="" CreationMode="Temp" FormName="" Id="Action_9c7facbb-a8fa-4be6-aad1-fac21060af34" IsSetupMeeting="false" Name="" QualifyingCondition="" Rule="" SuccessfulMessage="" Type="NotifyOwner" xsi:type="NotifyOwnerAction">
+            <Params>
+              <Param Name="To">//PhaseStepBeingEvaluated/StepBeingEvaluated/Owner</Param>
+              <Param Name="Cc"/>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">$Param$StepName$Param$ for $GRC_RECORD_NUMBER$ has been assigned to you.</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">#lt;#br#gt;#</Param>
+              <Param Name="AppendTaskLink">true</Param>
+              <Param Name="AppendRecordLink">false</Param>
+            </Params>
+          </Action>
+        </EntryActions>
+        <ExitActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action CreationMode="Complete" Id="Action_d460895a-157e-4d50-bc69-af33b85e8f47" Name="Validation" Rule="Completion Review - Effectiveness Review Due Date cannot be lesss than today" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+        </ExitActions>
+      </TaskNodeData><TaskNodeData AllowedTime="" AllowedTimeSiteCode="" AllowedTimeUnit="" AllowOtherUsersWithSameRoleToSignOff="true" Category="Task" ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_TEAM" Description="Approve Action Plan task" DroppedToDiagram="true" DueDate="../V_SS_CAPA-V_SS_CAPA_POLICY/PLAN_DUE_DATE" DynamicFormName="" DynamicTaskName="" EscalateToOwner="true" ExecuteInPortal="" FieldToBeSetWithStepID="" Figure="BpmnTaskUser" FormName="CAPA_PLANNING_APPROVAL" IsApproverTask="true" Key="tApproveActionPlans" Level="'1'" Location="300 1280" NotifyOwner="true" NotifyOwnerWithEscalationCode="CAPA_NOT_ACT_PLN_APR" Owner="ACTOR_CODE" OwnerRole="ROLE_CODE" PerUniqueUsers="false" QualifyingCondition="MEMBER_TYPE='Action Plan Approval'" SignatureRequired="true" SkipConfirmation="false" SubGraphKey="ApprovalLevel 5" TaskCreationMode="Dynamic" Text="Approve Action Plans">
+        <EntryActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action ContextNode="" CreationMode="Temp" FormName="" Id="f0544681-2c8b-4600-9eec-f27020deb717" IsSetupMeeting="false" Name="" QualifyingCondition="" Rule="" SuccessfulMessage="" Type="NotifyOwner" xsi:type="NotifyOwnerAction">
+            <Params>
+              <Param Name="To">//PhaseStepBeingEvaluated/StepBeingEvaluated/Owner</Param>
+              <Param Name="Cc"/>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">$Param$StepName$Param$ for $GRC_RECORD_NUMBER$ has been assigned to you.</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">#lt;#br#gt;#</Param>
+              <Param Name="AppendTaskLink">true</Param>
+              <Param Name="AppendRecordLink">false</Param>
+            </Params>
+          </Action>
+        </EntryActions>
+        <ExitActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action CreationMode="Temp" FormName="" Id="11bdd192-f8f3-4678-986d-066133ea14d6" IsSetupMeeting="false" Name="Notification Action Plan Reject" Rule="Notification - Reject" SuccessfulMessage="" Type="Notification" xsi:type="NotificationAction">
+            <Params>
+              <Param Name="To">V_SS_CAPA-V_SS_CAPA_TEAM[MEMBER_TYPE='Action Plan Development']/ACTOR_CODE</Param>
+              <Param Name="Cc">COORDINATOR_CODE</Param>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">Action Plans for $RECORD_NUMBER$ have been rejected</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">
+                Action Plans for $RECORD_NUMBER$ have been rejected.
+                #lt;#br#gt;#
+                #lt;#br#gt;#
+                Rejection Comment:
+                $V_ENU_NONPERSIS_USER_DATA/ENU_COMMENT$
+                #lt;#br#gt;#
+                #lt;#br#gt;#
+                CAPA System (*Do not reply to this email. This is an automated mailing and the mailbox is not monitored.)
+              </Param>
+              <Param Name="AppendTaskLink">false</Param>
+              <Param Name="AppendRecordLink">true</Param>
+            </Params>
+          </Action>
+        </ExitActions>
+      </TaskNodeData><TaskNodeData AllowedTime="" AllowedTimeSiteCode="" AllowedTimeUnit="" AllowOtherUsersWithSameRoleToSignOff="true" Category="Task" ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_TEAM" Description="Verify/Validate CAPA Action Plan task" DroppedToDiagram="true" DueDate="../V_SS_CAPA-V_SS_CAPA_POLICY/PLAN_DUE_DATE" DynamicFormName="" DynamicTaskName="" EscalateToOwner="true" ExecuteInPortal="" FieldToBeSetWithStepID="" Figure="BpmnTaskUser" FormName="CAPA_ACT_PLAN_VERIFICATION" IsApproverTask="true" Key="tVerify/ValidateActionPlans" Level="'1'" Location="100 920" NotifyOwner="true" NotifyOwnerWithEscalationCode="CAPA_NOT_ACT_PLN_VER" Owner="ACTOR_CODE" OwnerRole="ROLE_CODE" PerUniqueUsers="false" QualifyingCondition="MEMBER_TYPE='Action Plan Verification/Validation'" SignatureRequired="true" SkipConfirmation="false" SubGraphKey="ApprovalLevel 3" TaskCreationMode="Dynamic" Text="Verify/Validate Action Plans">
+        <EntryActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action ContextNode="" CreationMode="Temp" FormName="" Id="9c9745ce-0793-40b5-ab38-8b065a20afe9" IsSetupMeeting="false" Name="" QualifyingCondition="" Rule="" SuccessfulMessage="" Type="NotifyOwner" xsi:type="NotifyOwnerAction">
+            <Params>
+              <Param Name="To">//PhaseStepBeingEvaluated/StepBeingEvaluated/Owner</Param>
+              <Param Name="Cc"/>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">$Param$StepName$Param$ for $GRC_RECORD_NUMBER$ has been assigned to you.</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">#lt;#br#gt;#</Param>
+              <Param Name="AppendTaskLink">true</Param>
+              <Param Name="AppendRecordLink">false</Param>
+            </Params>
+          </Action>
+        </EntryActions>
+        <ExitActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action CreationMode="Temp" FormName="" Id="1b11c1c1-2f4a-471e-85c2-59b1828e8972" IsSetupMeeting="false" Name="Notification Action Verification Reject" Rule="Act Pln Verification - Failed" SuccessfulMessage="" Type="Notification" xsi:type="NotificationAction">
+            <Params>
+              <Param Name="To">V_SS_CAPA-V_SS_CAPA_TEAM[MEMBER_TYPE='Action Plan Verification/Validation']/ACTOR_CODE</Param>
+              <Param Name="Cc">COORDINATOR_CODE</Param>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">Action Plan Verification/Validation for $RECORD_NUMBER$ has been rejected</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">
+                Action Plan Verification/Validation for $RECORD_NUMBER$ has been rejected.
+                #lt;#br#gt;#
+                #lt;#br#gt;#
+                Rejection Comment:$V_ENU_NONPERSIS_USER_DATA/ENU_COMMENT$
+                #lt;#br#gt;#
+                #lt;#br#gt;#
+                CAPA System (*Do not reply to this email. This is an automated mailing and the mailbox is not monitored.)
+              </Param>
+              <Param Name="AppendTaskLink">false</Param>
+              <Param Name="AppendRecordLink">true</Param>
+            </Params>
+          </Action>
+          <Action CreationMode="Complete" Id="22287431-13e7-48af-ab88-2a97adaf3cf1" Name="Validation" Rule="Verify/Validate - Atleast one action plan must be marked as failed if applicable" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_ACTION" CreationMode="Temp" Id="bd472e7e-8e6d-4134-bfbc-9a323f3c212f" Name="Reset Action Plan Verify/Validate Information " QualifyingCondition="../PLAN_FAILED_TO_VERIFY!='true'" RowIdentifier="PK_ID" SuccessfulMessage="" Type="Update" xsi:type="UpdateAction">
+            <Params>
+              <Param Id="79a9ca25-aac4-48c2-88c6-84bd3d6ff028" Name="FAIL_TO_VERIFY" Type="String">'false'</Param>
+              <Param Id="9a2679ba-80e4-4946-88df-62d563a51207" Name="VERIFICATION_NOTE" Type="String">''</Param>
+              <Param Id="f5580e5b-935a-4050-8e4c-e2a520207b72" Name="VERIFICATION_RESULT" Type="String">'Pass'</Param>
+            </Params>
+          </Action>
+        </ExitActions>
+      </TaskNodeData><TaskNodeData AllowedTime="" AllowedTimeSiteCode="" AllowedTimeUnit="" AllowOtherUsersWithSameRoleToSignOff="true" Category="Task" ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_TEAM" Description="Develop Action Plan task" DroppedToDiagram="true" DueDate="../V_SS_CAPA-V_SS_CAPA_POLICY/PLAN_DUE_DATE" DynamicFormName="" DynamicTaskName="" EscalateToOwner="true" ExecuteInPortal="" FieldToBeSetWithStepID="" Figure="Square" FormName="CAPA_PLANNING" IsApproverTask="false" Key="tDevelopActionPlans" Level="'1'" Location="40 640" NotifyOwner="true" NotifyOwnerWithEscalationCode="CAPA_NOT_ACT_PLN" Owner="ACTOR_CODE" OwnerRole="ROLE_CODE" PerUniqueUsers="false" QualifyingCondition="MEMBER_TYPE='Action Plan Development'" SignatureRequired="true" SkipConfirmation="false" SubGraphKey="pPlanning" TaskCreationMode="Dynamic" Text="Develop Action Plans">
+        <EntryActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action ContextNode="" CreationMode="Temp" FormName="" Id="45ad0fca-96f5-4e6b-8274-3470551d0650" IsSetupMeeting="false" Name="" QualifyingCondition="" Rule="" SuccessfulMessage="" Type="NotifyOwner" xsi:type="NotifyOwnerAction">
+            <Params>
+              <Param Name="To">//PhaseStepBeingEvaluated/StepBeingEvaluated/Owner</Param>
+              <Param Name="Cc"/>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">$Param$StepName$Param$ for $GRC_RECORD_NUMBER$ has been assigned to you.</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">#lt;#br#gt;#</Param>
+              <Param Name="AppendTaskLink">true</Param>
+              <Param Name="AppendRecordLink">false</Param>
+            </Params>
+          </Action>
+        </EntryActions>
+        <ExitActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action CreationMode="Complete" Id="4996f8e6-9e46-4a63-8935-d58026d690b3" Name="Validation" Rule="Planning- At least one action plan should be defined" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Complete" Id="48272e22-5d83-49b3-bb9b-ee24cb9e01d6" Name="Validation" Rule="Planning - Assigned Role should match Assigned Actor" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_ACTION" CreationMode="Temp" Id="0fee8902-bfcc-492a-8f6d-ce2169c1448a" Name="Update Action Verification/Validation Information" RowIdentifier="PK_ID" SuccessfulMessage="" Type="Update" xsi:type="UpdateAction">
+            <Params>
+              <Param Id="e8798b94-2d65-422b-ad30-4caa56651cbc" Name="FAIL_TO_VERIFY" Type="String">'false'</Param>
+              <Param Id="89e9dc1e-ea80-4c9e-9cf3-4baf4ba696eb" Name="VERIFICATION_NOTE" Type="String">''</Param>
+              <Param Id="eec28c09-bb32-48de-ab7f-be61a0e3f70f" Name="VERIFICATION_RESULT" Type="String">''</Param>
+            </Params>
+          </Action>
+          <Action ContextNode="V_SS_CAPA" CreationMode="Temp" Id="efb578bd-4419-4eb0-9cfd-931274bef346" Name="Update CAPA Action Plan Verification Flag" RowIdentifier="PK_ID" SuccessfulMessage="" Type="Update" xsi:type="UpdateAction">
+            <Params>
+              <Param Id="2484e044-88df-4e5f-8410-185795af3a63" Name="PLAN_FAILED_TO_VERIFY" Type="String">''</Param>
+            </Params>
+          </Action>
+        </ExitActions>
+      </TaskNodeData><TaskNodeData AllowedTime="" AllowedTimeSiteCode="" AllowedTimeUnit="" AllowOtherUsersWithSameRoleToSignOff="true" Category="Task" ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_TEAM" Description="Approve CAPA Investigation task" DroppedToDiagram="true" DueDate="../V_SS_CAPA-V_SS_CAPA_POLICY/INVEST_DUE_DATE" DynamicFormName="" DynamicTaskName="" EscalateToOwner="true" ExecuteInPortal="" FieldToBeSetWithStepID="" Figure="BpmnTaskUser" FormName="CAPA_INVESTIGATION_APPROVAL" IsApproverTask="true" Key="tApproveCAPAInvestigation" Level="'1'" Location="380 300" NotifyOwner="true" NotifyOwnerWithEscalationCode="CAPA_NOT_INV_APR" Owner="ACTOR_CODE" OwnerRole="ROLE_CODE" PerUniqueUsers="false" QualifyingCondition="MEMBER_TYPE='Investigation Approval'" SignatureRequired="true" SkipConfirmation="false" SubGraphKey="alpInvestigationApprovalApprovalLevel" TaskCreationMode="Dynamic" Text="Approve CAPA Investigation">
+        <EntryActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action ContextNode="" CreationMode="Temp" FormName="" Id="Action_64836c6b-a1db-4c65-b4a6-3a85819be754" IsSetupMeeting="false" Name="" QualifyingCondition="" Rule="" SuccessfulMessage="" Type="NotifyOwner" xsi:type="NotifyOwnerAction">
+            <Params>
+              <Param Name="To">//PhaseStepBeingEvaluated/StepBeingEvaluated/Owner</Param>
+              <Param Name="Cc"/>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">Investigation approval for CAPA: $../RECORD_NUMBER$ has been assigned to you.</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">#lt;#br#gt;#</Param>
+              <Param Name="AppendTaskLink">true</Param>
+              <Param Name="AppendRecordLink">false</Param>
+            </Params>
+          </Action>
+        </EntryActions>
+        <ExitActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action CreationMode="Temp" FormName="" Id="Action_0adef663-fc5c-4297-a95d-b831c6112e24" IsSetupMeeting="false" Name="Notification Action Reject" Rule="Notification - Reject" SuccessfulMessage="" Type="Notification" xsi:type="NotificationAction">
+            <Params>
+              <Param Name="To">V_SS_CAPA-V_SS_CAPA_TEAM[MEMBER_TYPE='Investigation']/ACTOR_CODE</Param>
+              <Param Name="Cc">COORDINATOR_CODE</Param>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">Investigation for $RECORD_NUMBER$ has been Rejected</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">Investigation for $RECORD_NUMBER$ has been Rejected.
+#lt;#br#gt;#
+#lt;#br#gt;#
+                Rejection Comment:
+                $V_ENU_NONPERSIS_USER_DATA/ENU_COMMENT$
+#lt;#br#gt;#
+#lt;#br#gt;#
+                CAPA System (*Do not reply to this email. This is an automated mailing and the mailbox is not monitored.)</Param>
+              <Param Name="AppendTaskLink">false</Param>
+              <Param Name="AppendRecordLink">true</Param>
+            </Params>
+          </Action>
+        </ExitActions>
+      </TaskNodeData><TaskNodeData AllowedTime="" AllowedTimeSiteCode="" AllowedTimeUnit="" AllowOtherUsersWithSameRoleToSignOff="true" Category="Task" ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_TEAM" Description="Investigate CAPA task" DroppedToDiagram="true" DueDate="../V_SS_CAPA-V_SS_CAPA_POLICY/INVEST_DUE_DATE" DynamicFormName="" DynamicTaskName="" EscalateToOwner="true" ExecuteInPortal="../QUALITY_PORTAL_CAPA" FieldToBeSetWithStepID="" Figure="Square" FormName="CAPA_INVESTIGATION" IsApproverTask="false" Key="tInvestigateCAPA" Level="'1'" Location="300 -20" NotifyOwner="true" NotifyOwnerWithEscalationCode="CAPA_NOT_INV" Owner="ACTOR_CODE" OwnerRole="ROLE_CODE" PerUniqueUsers="false" QualifyingCondition="MEMBER_TYPE='Investigation'" SignatureRequired="true" SkipConfirmation="false" SubGraphKey="pInvestigation" TaskCreationMode="Dynamic" Text="Investigate CAPA">
+        <EntryActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action ContextNode="" CreationMode="Temp" FormName="" Id="Action_0225fb22-6da3-4d8d-852f-11a2ecf32da9" IsSetupMeeting="false" Name="" QualifyingCondition="" Rule="" SuccessfulMessage="" Type="NotifyOwner" xsi:type="NotifyOwnerAction">
+            <Params>
+              <Param Name="To">//PhaseStepBeingEvaluated/StepBeingEvaluated/Owner</Param>
+              <Param Name="Cc"/>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">Investigation for CAPA: $../RECORD_NUMBER$ has been assigned to you.</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">#lt;#br#gt;#</Param>
+              <Param Name="AppendTaskLink">true</Param>
+              <Param Name="AppendRecordLink">false</Param>
+            </Params>
+          </Action>
+        </EntryActions>
+        <ExitActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action CreationMode="Complete" Id="Action_24827657-1ac3-475a-99cf-c6c0241bcaa2" Name="Validation" Rule="Investigation - At least one root cause is defined" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Complete" Id="Action_5df8f09b-b7fd-4417-9950-aff6cda73126" Name="Validation" Rule="Investigation - Performed Date should be less than or equal to today's date" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+        </ExitActions>
+      </TaskNodeData><TaskNodeData AllowedTime="" AllowedTimeSiteCode="" AllowedTimeUnit="" AllowOtherUsersWithSameRoleToSignOff="true" Category="Task" ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_TEAM" Description="Include Effectiveness Review Plan task" DroppedToDiagram="true" DueDate="../V_SS_CAPA-V_SS_CAPA_POLICY/IMPL_DUE_DATE" DynamicFormName="" DynamicTaskName="" EscalateToOwner="true" ExecuteInPortal="" FieldToBeSetWithStepID="" Figure="Square" FormName="CAPA_EFFECTIVENESS_PLANNING" IsApproverTask="false" Key="tIncludeEffectivenessReviewPlan" Level="'1'" Location="255.625 1638.125" NotifyOwner="true" NotifyOwnerWithEscalationCode="CAPA_NOT_INC_EFF_RVW_PLN" Owner="ACTOR_CODE" OwnerRole="ROLE_CODE" PerUniqueUsers="false" QualifyingCondition="MEMBER_TYPE='Effectiveness Review Plan' and //V_SS_CAPA /V_SS_CAPA-V_SS_CAPA_POLICY/EFFECT_PLANNING_REQ='true'" SignatureRequired="true" SkipConfirmation="false" SubGraphKey="pImplementation" TaskCreationMode="Dynamic" Text="Include Effectiveness Review Plan">
+        <EntryActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action ContextNode="" CreationMode="Temp" FormName="" Id="5e57f50c-d851-48a9-ac26-e8dc7626a2a0" IsSetupMeeting="false" Name="" QualifyingCondition="" Rule="" SuccessfulMessage="" Type="NotifyOwner" xsi:type="NotifyOwnerAction">
+            <Params>
+              <Param Name="To">//PhaseStepBeingEvaluated/StepBeingEvaluated/Owner</Param>
+              <Param Name="Cc"/>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">$Param$StepName$Param$ for $GRC_RECORD_NUMBER$ has been assigned to you.</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">#lt;#br#gt;#</Param>
+              <Param Name="AppendTaskLink">true</Param>
+              <Param Name="AppendRecordLink">false</Param>
+            </Params>
+          </Action>
+        </EntryActions>
+        <ExitActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action CreationMode="Complete" Id="Action_3f5764ba-30b4-494d-9f2b-fe0e66c9367a" Name="Validation" Rule="Effectiveness Plan - At least one Effectiveness Review plan is defined." SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+        </ExitActions>
+      </TaskNodeData><TaskNodeData AllowedTime="" AllowedTimeSiteCode="" AllowedTimeUnit="" AllowOtherUsersWithSameRoleToSignOff="true" Category="Task" ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_ACTION" Description="Implement Action Plan task" DroppedToDiagram="true" DueDate="DUE_DATE" DynamicFormName="" DynamicTaskName="" EscalateToOwner="true" ExecuteInPortal="../QUALITY_PORTAL_CAPA" FieldToBeSetWithStepID="" Figure="Square" FormName="CAPA_IMPLEMENTATION_ACTPLAN" IsApproverTask="false" Key="tImplementActionPlans" Level="'1'" Location="344.375 1641.875" NotifyOwner="true" NotifyOwnerWithEscalationCode="CAPA_NOT_IMP" Owner="ASSIGNED_ACT_CODE" OwnerRole="ASSIGNED_ROLE_CODE" PerUniqueUsers="true" QualifyingCondition="TRANSFERED_RECORD='Yes' and STATUS='No' and ACTION_TYPE='Action Plan'" SignatureRequired="true" SkipConfirmation="false" SubGraphKey="pImplementation" TaskCreationMode="Dynamic" Text="Implement Action Plans">
+        <EntryActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_ACTION" CreationMode="Temp" Id="7d396063-dfdf-4c1b-9420-6fda9a5cca8b" Name="Update Complete Action Phase" QualifyingCondition="(STATUS='Yes' or STATUS='Skipped') and SIGN_OFF_PHASE=''" RowIdentifier="PK_ID" SuccessfulMessage="" Type="Update" xsi:type="UpdateAction">
+            <Params>
+              <Param Id="9c662a3f-821d-4e62-a144-d7a2389cf147" Name="SIGN_OFF_PHASE" Type="String">'Implementation'</Param>
+            </Params>
+          </Action>
+          <Action ContextNode="" CreationMode="Temp" FormName="" Id="Action_e654da83-0d0e-498e-8275-63c84cbcd07a" IsSetupMeeting="false" Name="" QualifyingCondition="" Rule="" SuccessfulMessage="" Type="NotifyOwner" xsi:type="NotifyOwnerAction">
+            <Params>
+              <Param Name="To">//PhaseStepBeingEvaluated/StepBeingEvaluated/Owner</Param>
+              <Param Name="Cc"/>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">Implementation for CAPA: $../RECORD_NUMBER$ has been assigned to you.</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">#lt;#br#gt;#</Param>
+              <Param Name="AppendTaskLink">true</Param>
+              <Param Name="AppendRecordLink">false</Param>
+            </Params>
+          </Action>
+        </EntryActions>
+        <ExitActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action CreationMode="Complete" Id="Action_a97737ba-0055-4587-8696-7cbfc6a29cc4" Name="Validation" Rule="Implementation - All the action plans should be completed" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_ACTION" CreationMode="Temp" Id="ef8ad1f2-ba74-4d66-a538-fbbe5d935144" Name="Reset Requirement Fulfilled if Skipped" QualifyingCondition="STATUS != 'Yes'" RowIdentifier="PK_ID" SuccessfulMessage="" Type="Update" xsi:type="UpdateAction">
+            <Params>
+              <Param Id="62978b0f-3f89-4664-92b6-1eecc3f4047d" Name="REQUIREMENT_FULFILLED" Type="String">''</Param>
+            </Params>
+          </Action>
+          <Action ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_ACTION" CreationMode="Temp" Id="b8bdd612-63fd-4423-8af4-e0d06a306f99" Name="Update Sign-off Phase" QualifyingCondition="(STATUS='Yes' or STATUS='Skipped') and SIGN_OFF_PHASE=''" RowIdentifier="PK_ID" SuccessfulMessage="" Type="Update" xsi:type="UpdateAction">
+            <Params>
+              <Param Id="c589847d-e17b-4c04-8fc5-8b24986f5a33" Name="SIGN_OFF_PHASE" Type="String">'Implementation'</Param>
+            </Params>
+          </Action>
+        </ExitActions>
+      </TaskNodeData><TaskNodeData AllowedTime="" AllowedTimeSiteCode="" AllowedTimeUnit="" AllowOtherUsersWithSameRoleToSignOff="true" Category="Task" ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_TEAM" DroppedToDiagram="true" DueDate="" DynamicFormName="" DynamicTaskName="" EscalateToOwner="true" ExecuteInPortal="" FieldToBeSetWithStepID="" Figure="BpmnTaskUser" FormName="CAPA_DUE_DATE_EXTENSION_APPROVAL" IsApproverTask="true" Key="tApproveDueDateExtension" Level="'1'" Location="704.09375 -20" NotifyOwner="true" NotifyOwnerWithEscalationCode="CAPA_NOT_DUE_EXT" Owner="ACTOR_CODE" OwnerRole="ROLE_CODE" PerUniqueUsers="false" QualifyingCondition="MEMBER_TYPE='Due Date Extension Approval'" SignatureRequired="true" SkipConfirmation="false" SubGraphKey="ApprovalLevel" TaskCreationMode="Dynamic" Text="Approve Due Date Extension">
+        <EntryActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action CreationMode="Temp" FormName="" Id="Action_32a83415-9c7a-406d-b096-e46e8d3dcaa3" IsSetupMeeting="false" Name="Notification Action" Rule="If actor is NOT equal to CAPA Coordinator" SuccessfulMessage="" Type="Notification" xsi:type="NotificationAction">
+            <Params>
+              <Param Name="To">COORDINATOR_CODE</Param>
+              <Param Name="Cc"/>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">Due Date Extension has been requested for $CURRENT_PHASE$ for CAPA: $RECORD_NUMBER$</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">Due Date Extension has been requested for $CURRENT_PHASE$ for CAPA: $RECORD_NUMBER$. #lt;#br#gt;#
+#lt;#br#gt;#
+New Due Date requested: $V_SS_CAPA-V_SS_CAPA_EXTENSION[WORKFLOW_ID=//WorkFlow/Id]/REVISED_DUEDATE,{0:MMM-dd-yyyy}$
+#lt;#br#gt;#
+#lt;#br#gt;#
+CAPA System (*Do not reply to this email. This is an automated mailing and the mailbox is not monitored.)</Param>
+              <Param Name="AppendTaskLink">false</Param>
+              <Param Name="AppendRecordLink">true</Param>
+            </Params>
+          </Action>
+          <Action ContextNode="" CreationMode="Temp" FormName="" Id="Action_edc367a5-1611-4b41-b21a-1817a1c4fcc6" IsSetupMeeting="false" Name="" QualifyingCondition="" Rule="" SuccessfulMessage="" Type="NotifyOwner" xsi:type="NotifyOwnerAction">
+            <Params>
+              <Param Name="To">//PhaseStepBeingEvaluated/StepBeingEvaluated/Owner</Param>
+              <Param Name="Cc"/>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">$Param$StepName$Param$ for $GRC_RECORD_NUMBER$ has been assigned to you.</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">#lt;#br#gt;#</Param>
+              <Param Name="AppendTaskLink">true</Param>
+              <Param Name="AppendRecordLink">false</Param>
+            </Params>
+          </Action>
+        </EntryActions>
+        <ExitActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
+      </TaskNodeData><TaskNodeData AllowedTime="" AllowedTimeSiteCode="" AllowedTimeUnit="" AllowOtherUsersWithSameRoleToSignOff="true" Category="Task" ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_TEAM" DroppedToDiagram="true" DueDate="../V_SS_CAPA-V_SS_CAPA_POLICY/IMPL_DUE_DATE" DynamicFormName="" DynamicTaskName="" EscalateToOwner="true" ExecuteInPortal="" FieldToBeSetWithStepID="" Figure="BpmnTaskUser" FormName="CAPA_IMPLEMENTATION_VERIFICATION" IsApproverTask="true" Key="tVerifyImplementation" Level="'1'" Location="500 1880" NotifyOwner="true" NotifyOwnerWithEscalationCode="CAPA_NOT_IMP_APR" Owner="ACTOR_CODE" OwnerRole="ROLE_CODE" PerUniqueUsers="false" QualifyingCondition="MEMBER_TYPE='Implementation Verification'" SignatureRequired="true" SkipConfirmation="false" SubGraphKey="alpImplementationVerificationApprovalLevel2" TaskCreationMode="Dynamic" Text="Verify Implementation">
+        <EntryActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action ContextNode="" CreationMode="Temp" FormName="" Id="Action_0277c667-db71-4465-a56d-b8de8e65fd41" IsSetupMeeting="false" Name="" QualifyingCondition="" Rule="" SuccessfulMessage="" Type="NotifyOwner" xsi:type="NotifyOwnerAction">
+            <Params>
+              <Param Name="To">//PhaseStepBeingEvaluated/StepBeingEvaluated/Owner</Param>
+              <Param Name="Cc"/>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">$Param$StepName$Param$ for $GRC_RECORD_NUMBER$ has been assigned to you.</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">#lt;#br#gt;#</Param>
+              <Param Name="AppendTaskLink">true</Param>
+              <Param Name="AppendRecordLink">false</Param>
+            </Params>
+          </Action>
+        </EntryActions>
+        <ExitActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action CreationMode="Temp" Id="cfa36f6c-6bb2-4834-976d-50ee831f1bb7" Name="Evaluate Void Due Date Extension step in subworkflow" Rule="Implementation - Due Date needs Approval if Verify Implementation is Not Acceptable" SuccessfulMessage="" Type="Generic" Xml="&lt;Actions> &lt;Action Type=&quot;EvaluateStep&quot; Name=&quot;VoidDueDate&quot; ContextNode=&quot;&quot; SuccessMessageId=&quot;&quot; Id=&quot;Action_be9486c8-fe6e-4696-b7dd-17d2b14fd5e3&quot;>  &lt;Params>   &lt;Param Name=&quot;ContainerWorkflowKey&quot; Type=&quot;String&quot;>'CAPAWORKFLOW'&lt;/Param>   &lt;Param Name=&quot;WorkflowKey&quot; Type=&quot;String&quot;>'Due Date Extension'&lt;/Param>   &lt;Param Name=&quot;EntityTypeId&quot; Type=&quot;String&quot;>'CAPA'&lt;/Param>   &lt;Param Name=&quot;RecordId&quot; Type=&quot;String&quot;>PK_ID&lt;/Param>   &lt;Param Name=&quot;WorkflowInstanceId&quot; Type=&quot;String&quot;>&lt;/Param>   &lt;Param Name=&quot;StepId&quot; Type=&quot;String&quot;>'stVoidDueDate'&lt;/Param>   &lt;Param Name=&quot;Scope&quot; Type=&quot;String&quot;>'SameContainerWorkFlow'&lt;/Param>  &lt;/Params> &lt;/Action>&lt;/Actions>" xsi:type="GenericAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Temp" FormName="" Id="Action_6ef6a395-d40e-43fa-848b-1e42477c6f6c" IsSetupMeeting="false" Name="Notification Action Reject" Rule="Reject Implementation Verification - Notification" SuccessfulMessage="" Type="Notification" xsi:type="NotificationAction">
+            <Params>
+              <Param Name="To">V_SS_CAPA-V_SS_CAPA_TEAM[MEMBER_TYPE='Action Plan Development']/ACTOR_CODE</Param>
+              <Param Name="Cc">V_SS_CAPA-V_SS_CAPA_ACTION[ACTION_TYPE='Action Plan']/ASSIGNED_ACT_CODE; COORDINATOR_CODE</Param>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">Implementation Verification for CAPA: $RECORD_NUMBER$ has been rejected</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">Implementation Verification for CAPA: $RECORD_NUMBER$ has been rejected.
+#lt;#br#gt;#
+#lt;#br#gt;#
+Comment: $V_ENU_NONPERSIS_USER_DATA/ENU_COMMENT$
+#lt;#br#gt;#
+#lt;#br#gt;#
+CAPA System (*Do not reply to this email. This is an automated mailing and the mailbox is not monitored.)</Param>
+              <Param Name="AppendTaskLink">false</Param>
+              <Param Name="AppendRecordLink">true</Param>
+            </Params>
+          </Action>
+        </ExitActions>
+      </TaskNodeData><TaskNodeData AllowedTime="" AllowedTimeSiteCode="" AllowedTimeUnit="" AllowOtherUsersWithSameRoleToSignOff="true" Category="Task" ContextNode="V_SS_CAPA" Description="Verify CAPA Initiation task" DroppedToDiagram="true" DueDate="" DynamicFormName="" DynamicTaskName="" EscalateToOwner="true" ExecuteInPortal="" FieldToBeSetWithStepID="" Figure="Square" FormName="CAPA_INITIATION_VERIFICATION" IsApproverTask="false" Key="tVerifyCAPAInitiation" Level="'1'" Location="100 -160" NotifyOwner="true" NotifyOwnerWithEscalationCode="CAPA_NOT_INIT" Owner="COORDINATOR_CODE" OwnerRole="COORDINATOR_ROLE_CODE" PerUniqueUsers="false" QualifyingCondition="" SignatureRequired="true" SkipConfirmation="false" SubGraphKey="pInitiationVerification" TaskCreationMode="Dynamic" Text="Verify CAPA Initiation">
+        <EntryActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action ContextNode="V_SS_CAPA/V_SS_CAPA-V_SS_CAPA_TEAM" CreationMode="Temp" Id="cf3371e6-25da-446a-9d7a-601dee679154" Name="Update Coordinator in Team if reopened" QualifyingCondition="MEMBER_TYPE = &quot;Coordination&quot; and ACTOR_CODE != ../COORDINATOR_CODE" RowIdentifier="PK_ID" Rule="Is CAPA Reopened" SuccessfulMessage="" Type="Update" xsi:type="UpdateAction">
+            <Params>
+              <Param Id="b28d3f85-f2c1-4ff9-b9fe-f4d2df187386" Name="ACTOR_CODE" Type="String">../COORDINATOR_CODE</Param>
+            </Params>
+          </Action>
+          <Action ContextNode="" CreationMode="Temp" FormName="" Id="08ad9860-d47a-40af-96e1-7e6f74be56b1" IsSetupMeeting="false" Name="" QualifyingCondition="" Rule="" SuccessfulMessage="" Type="NotifyOwner" xsi:type="NotifyOwnerAction">
+            <Params>
+              <Param Name="To">//PhaseStepBeingEvaluated/StepBeingEvaluated/Owner</Param>
+              <Param Name="Cc"/>
+              <Param Name="Bcc"/>
+              <Param Name="Subject">$Param$StepName$Param$ for $GRC_RECORD_NUMBER$ has been assigned to you.</Param>
+              <Param Name="StartDateTime"/>
+              <Param Name="EndDateTime"/>
+              <Param Name="Location"/>
+              <Param Name="Message">#lt;#br#gt;#</Param>
+              <Param Name="AppendTaskLink">true</Param>
+              <Param Name="AppendRecordLink">false</Param>
+            </Params>
+          </Action>
+        </EntryActions>
+        <ExitActions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+          <Action ContextNode="V_SS_CAPA" CreationMode="Temp" Id="Action_1229cbde-6fca-4690-91a4-cb6abf08a271" Name="Update Coordinator" RowIdentifier="PK_ID" Rule="Team Members - Is  Coordination defined" SuccessfulMessage="" Type="Update" xsi:type="UpdateAction">
+            <Params>
+              <Param Id="5cbc42aa-5c3c-4015-a534-959f67b24479" Name="COORDINATOR_CODE" Type="String">V_SS_CAPA-V_SS_CAPA_TEAM[MEMBER_TYPE='Coordination']/ACTOR_CODE</Param>
+              <Param Id="485e2220-e18d-415c-af23-2bc5b0600583" Name="COORDINATOR_ROLE_CODE" Type="String">V_SS_CAPA-V_SS_CAPA_TEAM[MEMBER_TYPE='Coordination']/ROLE_CODE</Param>
+            </Params>
+          </Action>
+          <Action ContextNode="V_SS_CAPA" CreationMode="Temp" Id="Action_38f0a7ed-026e-42b3-94ce-98a9fb074463" Name="Update  Owner" RowIdentifier="PK_ID" Rule="Team Members - Is Ownership defined" SuccessfulMessage="" Type="Update" xsi:type="UpdateAction">
+            <Params>
+              <Param Id="38b1cea9-b171-4daf-8554-1ce6c1e9a79e" Name="CAPA_OWNER_CODE" Type="String">V_SS_CAPA-V_SS_CAPA_TEAM[MEMBER_TYPE='Ownership']/ACTOR_CODE</Param>
+              <Param Id="1045c48e-3c96-45f6-9d36-4b004bab5eb7" Name="OWNER_ROLE_CODE" Type="String">V_SS_CAPA-V_SS_CAPA_TEAM[MEMBER_TYPE='Ownership']/ROLE_CODE</Param>
+            </Params>
+          </Action>
+          <Action ContextNode="V_SS_CAPA" CreationMode="Temp" Id="5dd6d2a3-6130-4d67-ae20-9f7d064ef25c" Name="Update Quality Portal User" RowIdentifier="PK_ID" Rule="Initiation Verification - Is Quality Portal User not Defined" SuccessfulMessage="" Type="Update" xsi:type="UpdateAction">
+            <Params>
+              <Param Id="ba2995dc-0d75-4530-bd77-4146704699db" Name="QUALITY_PORTAL_CAPA" Type="String">'false'</Param>
+            </Params>
+          </Action>
+          <Action CreationMode="Complete" Id="1720ee15-b278-4888-bba7-a70e5ff9bddc" Name="Validation" Rule="Team Members-Investigation task should be defined if Investigation is required" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Complete" Id="dad3f92e-8bad-4f3f-b0db-b5e7317ced4d" Name="Validation" Rule="Team Members-Investigation Approval task should be defined if Approval is required" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Complete" Id="c9f8dd2a-0aed-40b0-aeca-16ae582d54b6" Name="Validation" Rule="Team Members-Action Plan Development task should be defined" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Complete" Id="b9a4933b-7b22-4670-b823-9c604c533e56" Name="Validation" Rule="Team Members-Action Plan Verification/Validation task should be defined if Verification/Validation is required" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Complete" Id="18c7c5f3-e1f6-42ff-b74d-dba689b1eb2e" Name="Validation" Rule="Team Members-Action Plan Approval task should be defined if Action Plan Approval is required" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Complete" Id="2c764704-d03d-4ff4-a590-12a512631c86" Name="Validation" Rule="Team Members-Effectiveness Review Plan task should be defined if Plan is required" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Complete" Id="567dfd19-561b-4596-ae12-c1ce40534118" Name="Validation" Rule="Team Members-Implementation Verification task should be defined if Approval is required" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Complete" Id="20ef0d5e-a73f-4af5-afb9-ac531db38d53" Name="Validation" Rule="Team Members-Completion Review task should be defined" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Complete" Id="c640e02d-cdff-4c37-a1ed-746a7a167e3a" Name="Validation" Rule="Team Members-Effectiveness Review task should be defined" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Complete" Id="60f7e87e-9e48-425e-ad17-fbf049a7999e" Name="Validation" Rule="Team Members-Due Date Extension Approval task should be defined" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Complete" Id="d7812926-53ea-407a-98a5-0462ccdf5c33" Name="Validation" Rule="Team Members - Coordination task should be defined" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Complete" Id="775d09db-ae3f-418e-a805-b70c704df16e" Name="Validation" Rule="Team Members - Ownership task should be defined" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action CreationMode="Complete" Id="e2ba14e5-9494-467f-8248-526370797ef1" Name="Validation" Rule="Initiation Verification team and Update Team Member - Assigned Role Should match Assigned Actor" SuccessfulMessage="" Type="Validation" xsi:type="ValidationAction">
+            <Params/>
+          </Action>
+          <Action Id="11fe7563-97f0-40ff-8337-20b26935e05b" MappingDataObject="CAPA Source" MappingDataSource="List" Name="Initialize CAPA Source Type" SuccessfulMessage="" TargetContextNode="V_SS_CAPA" Type="InitializeData" xsi:type="InitializeDataAction">
+            <DataMaps>
+              <DataMap Id="8e23e5e1-c967-40af-af66-a0fb2f44ee54" TargetXPath="CAPA_SOURCE_TYPE" Type="String">LST_VALUE3</DataMap>
+            </DataMaps>
+            <Params/>
+            <QualifyingConditions>
+              <Conditions ChildRowsModifier="All" CloseGroup="false" ConditionId="e11b41a9-5515-4a80-be60-095c3c0e5f62" LeftValue="LST_VALUE" OpenGroup="false" Operator="EQ" RelationalOperator="" RightValue="CAPA_SOURCE"/>
+            </QualifyingConditions>
+          </Action>
+        </ExitActions>
+      </TaskNodeData>

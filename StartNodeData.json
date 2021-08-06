@@ -1,0 +1,38 @@
+[
+	{
+		"id": "1507ee84-e184-4b0f-9461-de92690db2af",
+		"type": "start",
+		"data": {
+			"label": "Start"
+		},
+		"position": {
+			"x": "704.09375",
+			"y": "-180"
+		},
+		"className": "diagram_element diagram_start"
+	},
+	{
+		"id": "1137c917-9b96-4c7a-accb-6061312c9e49",
+		"type": "start",
+		"data": {
+			"label": "Start"
+		},
+		"position": {
+			"x": "360",
+			"y": "-540"
+		},
+		"className": "diagram_element diagram_start"
+	},
+	{
+		"id": "b0d6b1e4-df9e-4ebf-be9c-2d36429f9422",
+		"type": "start",
+		"data": {
+			"label": "Start"
+		},
+		"position": {
+			"x": "654.5",
+			"y": "2622.5"
+		},
+		"className": "diagram_element diagram_start"
+	}
+]

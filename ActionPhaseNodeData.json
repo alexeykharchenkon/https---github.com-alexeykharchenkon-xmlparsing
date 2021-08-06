@@ -1,0 +1,146 @@
+[
+	{
+		"id": "d5e5a921-b85d-44fe-99a1-de25b00b3fd4",
+		"type": "phase",
+		"data": {
+			"label": "On Follow up required"
+		},
+		"position": {
+			"x": "420",
+			"y": "2520"
+		},
+		"className": "diagram_element diagram_phase"
+	},
+	{
+		"id": "306fd6f3-d1df-4837-b101-c57e5e1205ae",
+		"type": "phase",
+		"data": {
+			"label": "On Complete off Effectiveness Review"
+		},
+		"position": {
+			"x": "300",
+			"y": "2900"
+		},
+		"className": "diagram_element diagram_phase"
+	},
+	{
+		"id": "3f1ce63f-39b6-42d1-be40-e6e9d4c8c6e6",
+		"type": "phase",
+		"data": {
+			"label": "End of Implementation"
+		},
+		"position": {
+			"x": "40",
+			"y": "1940"
+		},
+		"className": "diagram_element diagram_phase"
+	},
+	{
+		"id": "cd169999-3197-41bb-a5a4-801be7875ffb",
+		"type": "phase",
+		"data": {
+			"label": "Send Notification on Reject"
+		},
+		"position": {
+			"x": "644.09375",
+			"y": "220"
+		},
+		"className": "diagram_element diagram_phase"
+	},
+	{
+		"id": "8a2449ea-539d-42b9-aa79-00bee088d511",
+		"type": "phase",
+		"data": {
+			"label": "Create New CAPA"
+		},
+		"position": {
+			"x": "240",
+			"y": "2720"
+		},
+		"className": "diagram_element diagram_phase"
+	},
+	{
+		"id": "428c6fd8-4eba-4385-b9b8-ce4dd1658c7b",
+		"type": "phase",
+		"data": {
+			"label": "Move on to Action Plan Approval"
+		},
+		"position": {
+			"x": "-60",
+			"y": "1160"
+		},
+		"className": "diagram_element diagram_phase"
+	},
+	{
+		"id": "ec2e1259-50b1-49ca-9985-2c19ed0deba9",
+		"type": "phase",
+		"data": {
+			"label": "Move to Implementation"
+		},
+		"position": {
+			"x": "300",
+			"y": "1500"
+		},
+		"className": "diagram_element diagram_phase"
+	},
+	{
+		"id": "4900ed75-0193-4ac1-a094-00ec25a1858b",
+		"type": "phase",
+		"data": {
+			"label": "Evaluate Failure Mode and Cause"
+		},
+		"position": {
+			"x": "40",
+			"y": "500"
+		},
+		"className": "diagram_element diagram_phase"
+	},
+	{
+		"id": "5e856d11-4b2a-4f9f-bec2-bac15550e1ad",
+		"type": "phase",
+		"data": {
+			"label": "Close CAPA"
+		},
+		"position": {
+			"x": "-20",
+			"y": "3220"
+		},
+		"className": "diagram_element diagram_phase"
+	},
+	{
+		"id": "b5d1c0d1-7717-4eea-bef7-3672c6033c4e",
+		"type": "phase",
+		"data": {
+			"label": "Send Notification on Approve"
+		},
+		"position": {
+			"x": "784.09375",
+			"y": "220"
+		},
+		"className": "diagram_element diagram_phase"
+	},
+	{
+		"id": "4fda78ae-48e3-4056-988d-e72d3033ce81",
+		"type": "phase",
+		"data": {
+			"label": "Non Effectiveness Other Action"
+		},
+		"position": {
+			"x": "60",
+			"y": "2680"
+		},
+		"className": "diagram_element diagram_phase"
+	},
+	{
+		"id": "0ab636f1-1896-4229-b780-3e38b0397fed",
+		"type": "phase",
+		"data": {
+			"label": "Before Initiation Verification"
+		},
+		"position": {
+			"x": "100",
+			"y": "-300"
+		},
+		"className": "diagram_element diagram_phase"
+	}
+]

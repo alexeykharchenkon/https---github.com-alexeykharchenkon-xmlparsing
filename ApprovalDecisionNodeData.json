@@ -1,0 +1,62 @@
+[
+	{
+		"id": "12cebaa0-7d07-4501-84fc-a88bbbac0152",
+		"type": "decision",
+		"data": {
+			"label": "Approval Result"
+		},
+		"position": {
+			"x": "704.09375",
+			"y": "140"
+		},
+		"className": "diagram_element diagram_decision"
+	},
+	{
+		"id": "01cfb982-75e0-4867-8549-fefa3017de7f",
+		"type": "decision",
+		"data": {
+			"label": "Approval Result"
+		},
+		"position": {
+			"x": "720",
+			"y": "1240"
+		},
+		"className": "diagram_element diagram_decision"
+	},
+	{
+		"id": "d4718fcc-4c63-424f-a8ac-ef0785f09261",
+		"type": "decision",
+		"data": {
+			"label": "Approval Result"
+		},
+		"position": {
+			"x": "320",
+			"y": "2080"
+		},
+		"className": "diagram_element diagram_decision"
+	},
+	{
+		"id": "3459ed42-21c7-4b2b-b34e-78a9638125ad",
+		"type": "decision",
+		"data": {
+			"label": "Approval Result"
+		},
+		"position": {
+			"x": "-140",
+			"y": "1080"
+		},
+		"className": "diagram_element diagram_decision"
+	},
+	{
+		"id": "42bb99d2-8b15-42c5-a875-cacd507c9c06",
+		"type": "decision",
+		"data": {
+			"label": "Approval Result"
+		},
+		"position": {
+			"x": "380",
+			"y": "500"
+		},
+		"className": "diagram_element diagram_decision"
+	}
+]

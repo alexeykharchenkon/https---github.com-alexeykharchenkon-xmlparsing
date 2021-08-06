@@ -1,0 +1,22 @@
+{
+  "name": "xmltojson",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "dom-parser": "^0.1.6",
+    "express": "^4.17.1",
+    "uuid": "^8.3.2",
+    "xml-parse-from-string": "^1.0.1",
+    "xmldom": "^0.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "scripts": {
+    "start": "nodemon start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
